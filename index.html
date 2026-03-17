@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fabric HS &amp; ОКВЭД Codes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Font: Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FFFFF2;   /* page background */
+      --primary: #004777;
+      --accent1: #FFADD6;
+      --accent2: #F57200;
+      --text-main: #1f2933;
+      --text-muted: #5f6c80;
+      --card-border: #d0d7e2;
+      --code-bg: #f3f6fb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 14px 28px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+      margin: 0 0 0.4em;
+      color: var(--primary);
+      letter-spacing: 0.02em;
+    }
+    .subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(0,71,119,0.06);
+      border: 1px solid rgba(0,71,119,0.35);
+      color: var(--primary);
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .pill span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(245,114,0,0.1);
+      color: var(--accent2);
+    }
+    section {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 14px 14px 16px;
+      margin-bottom: 16px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    @media (min-width: 720px) {
+      section { padding: 16px 18px 18px; margin-bottom: 18px; }
+    }
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 1.15rem;
+      margin: 0;
+      color: var(--primary);
+    }
+    .section-tagline {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 7px 8px;
+      text-align: left;
+    }
+    th {
+      background: linear-gradient(to right, #FFADD6, #F57200);
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+    tr:nth-child(even) td {
+      background: #fafbff;
+    }
+    tr:nth-child(odd) td {
+      background: #ffffff;
+    }
+    tr:hover td {
+      background: rgba(255,173,214,0.18);
+    }
+    .code-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      margin: 2px 2px 2px 0;
+      border-radius: 999px;
+      background: var(--code-bg);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .code-badge span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-right: 6px;
+      color: var(--accent2);
+    }
+    .notes {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .footnote {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin: 10px 2px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="pill">
+      Textiles export mapping
+      <span>HS · ТН ВЭД · ОКВЭД</span>
+    </div>
+    <h1>Fabric Codes for Russia, China &amp; Turkey</h1>
+    <p class="subtitle">
+      HS textile headings for fabrics used in bedding, apparel, kidswear, curtains and furniture,
+      plus Russian ОКВЭД activities for manufacturers and wholesalers.
+    </p>
+  </header>
+
+  <section>
+    <div class="section-header">
+      <h2>ТН ВЭД / HS – Fabric Uses</h2>
+      <div class="section-tagline">Same HS 4–6 digit groups in Russia, China and Turkey</div>
+    </div>
+    <div id="tnved-container"></div>
+    <p class="footnote">
+      HS headings 5208–5212, 5309, 5407–5408, 5512–5516 and 5903 are global Harmonized System groups,
+      extended nationally in ТН ВЭД ЕАЭС, China customs codes and Turkey GTİP.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2>ОКВЭД – Manufacturers</h2>
+      <div class="section-tagline">Russian activity codes for textile production</div>
+    </div>
+    <div id="okved-manufacturers"></div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2>ОКВЭД – Wholesalers / Distributors</h2>
+      <div class="section-tagline">Russian activity codes for wholesale fabric trade</div>
+    </div>
+    <div id="okved-wholesalers"></div>
+  </section>
+</div>
+
+<script>
+const data = {
+  tnved: {
+    description: "Global HS headings for woven fabrics (used as ТН ВЭД groups in ЕАЭС).",
+    uses: [
+      {
+        fabric_use: "Bed sheets / bedding",
+        hs_groups: ["5208–5212", "5309"],
+        notes: "Cotton & linen fabrics for bed linen; HS cotton woven fabrics & flax fabrics used by Russia / China / Turkey."
+      },
+      {
+        fabric_use: "Women apparel (summer, organic)",
+        hs_groups: ["5208–5212", "5309"],
+        notes: "Light cotton & linen organic fabrics for dresses, blouses and skirts."
+      },
+      {
+        fabric_use: "Kids apparel (all seasons, organic)",
+        hs_groups: ["5208–5212", "5309"],
+        notes: "Hypoallergenic organic cotton/linen fabrics for children's wear."
+      },
+      {
+        fabric_use: "Curtains & sheers",
+        hs_groups: ["5208–5210", "5407–5408", "5512–5516"],
+        notes: "Cotton, linen and man‑made filament/staple fabrics (including voile and decorative blends)."
+      },
+      {
+        fabric_use: "Furniture upholstery",
+        hs_groups: ["5209", "5211–5212", "5407", "5512–5516", "5903"],
+        notes: "Heavy cotton and synthetic furniture fabrics; coated/laminated textiles under 5903."
+      }
+    ]
+  },
+  okved: {
+    manufacturers: [
+      { code: "13.20",  description: "Ткацкое производство – weaving of fabrics from cotton, linen, synthetics." },
+      { code: "13.30",  description: "Отделочная обработка тканей – dyeing, printing, finishing, coating." },
+      { code: "13.92.1", description: "Производство готовых текстильных изделий, кроме одежды – bed linen, curtains, etc." }
+    ],
+    wholesalers: [
+      { code: "46.41",   description: "Торговля оптовая текстильными изделиями – core wholesaler/distributor code." },
+      { code: "46.41.1", description: "Оптовая торговля пряжей – yarn for weaving and knitting." },
+      { code: "46.41.2", description: "Оптовая торговля ткаными текстильными изделиями – woven fabrics for apparel, bedding, upholstery." }
+    ]
+  }
+};
+
+renderTnved(data.tnved);
+renderOkvedManufacturers(data.okved);
+renderOkvedWholesalers(data.okved);
+
+function renderTnved(tnved) {
+  const container = document.getElementById('tnved-container');
+  if (!tnved || !Array.isArray(tnved.uses)) {
+    container.textContent = "No HS / ТН ВЭД data.";
+    return;
+  }
+  let html = "";
+  if (tnved.description) {
+    html += '<p class="notes">' + escapeHtml(tnved.description) + '</p>';
+  }
+  html += '<table><thead><tr>' +
+          '<th>Use</th><th>HS / ТН ВЭД groups</th><th>Notes</th>' +
+          '</tr></thead><tbody>';
+  tnved.uses.forEach(item => {
+    const groups = (item.hs_groups || []).map(g =>
+      '<span class="code-badge"><span>HS</span>' + escapeHtml(g) + '</span>'
+    ).join(" ");
+    html += "<tr>" +
+            "<td>" + escapeHtml(item.fabric_use || "") + "</td>" +
+            "<td>" + groups + "</td>" +
+            "<td>" + escapeHtml(item.notes || "") + "</td>" +
+            "</tr>";
+  });
+  html += "</tbody></table>";
+  container.innerHTML = html;
+}
+
+function renderOkvedManufacturers(okved) {
+  const container = document.getElementById('okved-manufacturers');
+  if (!okved || !Array.isArray(okved.manufacturers)) {
+    container.textContent = "No manufacturer ОКВЭД data.";
+    return;
+  }
+  let html = '<table><thead><tr><th>ОКВЭД</th><th>Description</th></tr></thead><tbody>';
+  okved.manufacturers.forEach(item => {
+    html += "<tr>" +
+            '<td><span class="code-badge"><span>ОКВЭД</span>' + escapeHtml(item.code || "") + "</span></td>" +
+            "<td>" + escapeHtml(item.description || "") + "</td>" +
+            "</tr>";
+  });
+  html += "</tbody></table>";
+  container.innerHTML = html;
+}
+
+function renderOkvedWholesalers(okved) {
+  const container = document.getElementById('okved-wholesalers');
+  if (!okved || !Array.isArray(okved.wholesalers)) {
+    container.textContent = "No wholesaler ОКВЭД data.";
+    return;
+  }
+  let html = '<table><thead><tr><th>ОКВЭД</th><th>Description</th></tr></thead><tbody>';
+  okved.wholesalers.forEach(item => {
+    html += "<tr>" +
+            '<td><span class="code-badge"><span>ОКВЭД</span>' + escapeHtml(item.code || "") + "</span></td>" +
+            "<td>" + escapeHtml(item.description || "") + "</td>" +
+            "</tr>";
+  });
+  html += "</tbody></table>";
+  container.innerHTML = html;
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+</script>
+</body>
+</html>
