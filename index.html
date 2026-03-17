@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Fabric HS &amp; ОКВЭД Codes</title>
+  <title>Fabric HS &amp; ОКВЭД / HS &amp; NACE Kodları</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font: Open Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #FFFFF2;   /* page background */
+      --bg: #FFFFF2;
       --primary: #004777;
       --accent1: #FFADD6;
       --accent2: #F57200;
@@ -23,7 +22,7 @@
     body {
       margin: 0;
       font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background: #FFFFFF;   /* page background white */
       color: var(--text-main);
     }
     .page {
@@ -45,7 +44,7 @@
       font-size: 0.98rem;
       color: var(--text-muted);
       max-width: 720px;
-      margin: 0 auto;
+      margin: 4px auto 0;
     }
     .pill {
       display: inline-flex;
@@ -66,33 +65,50 @@
       background: rgba(245,114,0,0.1);
       color: var(--accent2);
     }
+    .lang-switch {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .lang-btn {
+      border-radius: 999px;
+      border: 1px solid var(--primary);
+      background: #ffffff;
+      color: var(--primary);
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      min-width: 70px;
+    }
+    .lang-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+    }
     section {
       background: #ffffff;
       border-radius: 14px;
-      padding: 14px 14px 16px;
-      margin-bottom: 16px;
+      padding: 14px 14px 14px;
+      margin: 12px 0 16px;
       border: 1px solid var(--card-border);
       box-shadow: 0 8px 18px rgba(0,0,0,0.04);
     }
     @media (min-width: 720px) {
-      section { padding: 16px 18px 18px; margin-bottom: 18px; }
+      section { padding: 18px 18px 18px; margin-bottom: 18px; }
     }
     .section-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 6px;
+      display: block;
       margin-bottom: 10px;
     }
-    h2 {
+    .section-header h2 {
       font-size: 1.15rem;
-      margin: 0;
+      margin: 0 0 4px 0;
       color: var(--primary);
     }
     .section-tagline {
       font-size: 0.85rem;
       color: var(--text-muted);
+      text-align: left;
     }
     table {
       width: 100%;
@@ -106,22 +122,16 @@
       text-align: left;
     }
     th {
-      background: #F57200;
+      background: #F57200;   /* orange bar */
       color: #ffffff;
       font-weight: 700;
       letter-spacing: 0.02em;
       font-size: 0.88rem;
       white-space: nowrap;
     }
-    tr:nth-child(even) td {
-      background: #fafbff;
-    }
-    tr:nth-child(odd) td {
-      background: #ffffff;
-    }
-    tr:hover td {
-      background: rgba(255,173,214,0.18);
-    }
+    tr:nth-child(even) td { background: #fafbff; }
+    tr:nth-child(odd) td { background: #ffffff; }
+    tr:hover td { background: rgba(255,173,214,0.18); }
     .code-badge {
       display: inline-flex;
       align-items: center;
@@ -142,127 +152,305 @@
       margin-right: 6px;
       color: var(--accent2);
     }
-    .notes {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 4px;
+	.notes {
+  font-size: 0.9rem;              /* bigger */
+  color: #2b3240;                 /* darker text */
+  margin-top: 6px;
+}
+
+.footnote {
+  font-size: 0.85rem;
+  color: #2b3240;
+  margin: 6px 2px 0;
+}
+    /* FINAL HEADER LAYOUT OVERRIDE */
+    .section-header {
+      display: block !important;
+      grid-template-columns: none !important;
+      align-items: normal !important;
+      gap: 0 !important;
+      margin-bottom: 10px !important;
     }
-    .footnote {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin: 10px 2px 0;
+    .section-header h2 {
+      margin: 0 0 4px 0 !important;
+    }
+    .section-tagline {
+      display: block !important;
+      font-size: 0.85rem !important;
+      color: var(--text-muted) !important;
+      text-align: left !important;
+      margin: 0 !important;
     }
   </style>
 </head>
 <body>
 <div class="page">
   <header>
-    <div class="pill">
-      Textiles export mapping
+    <div class="pill" data-i18n="pill">
+      Текстиль для экспорта
       <span>HS · ТН ВЭД · ОКВЭД</span>
     </div>
-    <h1>Fabric Codes for Russia, China &amp; Turkey</h1>
-    <p class="subtitle">
-      HS textile headings for fabrics used in bedding, apparel, kidswear, curtains and furniture,
-      plus Russian ОКВЭД activities for manufacturers and wholesalers.
+    <h1 data-i18n="title">Коды тканей для России, Китая и Турции</h1>
+    <p class="subtitle" data-i18n="subtitle">
+      HS‑коды тканей для постельного белья, одежды, детской одежды, штор и мебели,
+      а также коды ОКВЭД для производителей и оптовиков.
     </p>
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="tr">TR</button>
+    </div>
   </header>
 
   <section>
     <div class="section-header">
-      <h2>ТН ВЭД / HS – Fabric Uses</h2>
-      <div class="section-tagline">Same HS 4–6 digit groups in Russia, China and Turkey</div>
+      <h2 data-i18n="hs_header">ТН ВЭД / HS – виды использования тканей</h2>
+      <div class="section-tagline" data-i18n="hs_tagline">
+        Одинаковые группы HS (4–6 знаков) в России, Китае и Турции
+      </div>
     </div>
     <div id="tnved-container"></div>
-    <p class="footnote">
-      HS headings 5208–5212, 5309, 5407–5408, 5512–5516 and 5903 are global Harmonized System groups,
-      extended nationally in ТН ВЭД ЕАЭС, China customs codes and Turkey GTİP.
+    <p class="footnote" data-i18n="hs_footnote">
+      Группы HS 5208–5212, 5309, 5407–5408, 5512–5516 и 5903 являются глобальными
+      группами Гармонизированной системы и детализируются в ТН ВЭД ЕАЭС, кодах Китая и GTİP Турции.
     </p>
   </section>
 
   <section>
     <div class="section-header">
-      <h2>ОКВЭД – Manufacturers</h2>
-      <div class="section-tagline">Russian activity codes for textile production</div>
+      <h2 data-i18n="okved_m_header">ОКВЭД – производители</h2>
+      <div class="section-tagline" data-i18n="okved_m_tagline">
+        Коды видов деятельности России для текстильного производства
+      </div>
     </div>
     <div id="okved-manufacturers"></div>
   </section>
 
   <section>
     <div class="section-header">
-      <h2>ОКВЭД – Wholesalers / Distributors</h2>
-      <div class="section-tagline">Russian activity codes for wholesale fabric trade</div>
+      <h2 data-i18n="okved_w_header">ОКВЭД – оптовики / дистрибьюторы</h2>
+      <div class="section-tagline" data-i18n="okved_w_tagline">
+        Коды видов деятельности России для оптовой торговли тканями
+      </div>
     </div>
     <div id="okved-wholesalers"></div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2 data-i18n="import_header">Импорт тканей в Россию – основные требования</h2>
+      <div class="section-tagline" data-i18n="import_tagline">
+        Сертификация, маркировка и практический чек‑лист
+      </div>
+    </div>
+    <div id="import-notes"></div>
   </section>
 </div>
 
 <script>
-const data = {
-  tnved: {
-    description: "Global HS headings for woven fabrics (used as ТН ВЭД groups in ЕАЭС).",
-    uses: [
-      {
-        fabric_use: "Bed sheets / bedding",
-        hs_groups: ["5208–5212", "5309"],
-        notes: "Cotton & linen fabrics for bed linen; HS cotton woven fabrics & flax fabrics used by Russia / China / Turkey."
-      },
-      {
-        fabric_use: "Women apparel (summer, organic)",
-        hs_groups: ["5208–5212", "5309"],
-        notes: "Light cotton & linen organic fabrics for dresses, blouses and skirts."
-      },
-      {
-        fabric_use: "Kids apparel (all seasons, organic)",
-        hs_groups: ["5208–5212", "5309"],
-        notes: "Hypoallergenic organic cotton/linen fabrics for children's wear."
-      },
-      {
-        fabric_use: "Curtains & sheers",
-        hs_groups: ["5208–5210", "5407–5408", "5512–5516"],
-        notes: "Cotton, linen and man‑made filament/staple fabrics (including voile and decorative blends)."
-      },
-      {
-        fabric_use: "Furniture upholstery",
-        hs_groups: ["5209", "5211–5212", "5407", "5512–5516", "5903"],
-        notes: "Heavy cotton and synthetic furniture fabrics; coated/laminated textiles under 5903."
-      }
-    ]
+const dataset = {
+  ru: {
+    tnved: {
+      description: "Глобальные заголовки HS для тканых материалов (используются как группы ТН ВЭД в ЕАЭС).",
+      uses: [
+        {
+          fabric_use: "Постельное бельё / bedding",
+          hs_groups: ["5208–5212", "5309"],
+          notes: "Хлопковые и льняные ткани для постельного белья; группы HS по хлопчатобумажным и льняным тканям, применяемые в России / Китае / Турции."
+        },
+        {
+          fabric_use: "Женская одежда (лето, органик)",
+          hs_groups: ["5208–5212", "5309"],
+          notes: "Лёгкие хлопковые и льняные органические ткани для платьев, блуз и юбок."
+        },
+        {
+          fabric_use: "Детская одежда (все сезоны, органик)",
+          hs_groups: ["5208–5212", "5309"],
+          notes: "Гипоаллергенные органические хлопковые/льняные ткани для детской одежды."
+        },
+        {
+          fabric_use: "Шторы и тюль",
+          hs_groups: ["5208–5210", "5407–5408", "5512–5516"],
+          notes: "Хлопок, лён и химические нити/волокна (включая вуаль и декоративные смеси)."
+        },
+        {
+          fabric_use: "Мебельная обивка",
+          hs_groups: ["5209", "5211–5212", "5407", "5512–5516", "5903"],
+          notes: "Плотные хлопковые и синтетические мебельные ткани; покрытые/ламинированные под 5903."
+        }
+      ]
+    },
+    okved: {
+      manufacturers: [
+        { code: "13.20",  description: "Ткацкое производство – ткани из хлопка, льна, синтетики." },
+        { code: "13.30",  description: "Отделочная обработка тканей – крашение, печать, финишная отделка, покрытие." },
+        { code: "13.92.1", description: "Производство готовых текстильных изделий, кроме одежды – постельное бельё, шторы и др." }
+      ],
+      wholesalers: [
+        { code: "46.41",   description: "Торговля оптовая текстильными изделиями – основной код оптовика/дистрибьютора." },
+        { code: "46.41.1", description: "Оптовая торговля пряжей – сырьё для ткацких и вязальных производств." },
+        { code: "46.41.2", description: "Оптовая торговля ткаными текстильными изделиями – ткани для одежды, постельного белья и мебели." }
+      ]
+    },
+    ui: {
+      pill: "Текстиль для экспорта",
+      title: "Коды тканей для России, Китая и Турции",
+      subtitle: "HS‑коды тканей для постельного белья, одежды, детской одежды, штор и мебели, а также коды ОКВЭД для производителей и оптовиков.",
+      hs_header: "ТН ВЭД / HS – виды использования тканей",
+      hs_tagline: "Одинаковые группы HS (4–6 знаков) в России, Китае и Турции",
+      hs_footnote: "Группы HS 5208–5212, 5309, 5407–5408, 5512–5516 и 5903 являются глобальными группами Гармонизированной системы и детализируются в ТН ВЭД ЕАЭС, кодах Китая и GTİP Турции.",
+      okved_m_header: "ОКВЭД – производители",
+      okved_m_tagline: "Коды видов деятельности России для текстильного производства",
+      okved_w_header: "ОКВЭД – оптовики / дистрибьюторы",
+      okved_w_tagline: "Коды видов деятельности России для оптовой торговли тканями",
+      import_header: "Импорт тканей в Россию – основные требования",
+      import_tagline: "Сертификация, маркировка и практический чек‑лист",
+      import_html: `
+        <p class="notes">
+          Основные требования для ввоза тканей и одежды в Россию: соответствие ТР ТС 017/2011, оформление EAC‑декларации или сертификата соответствия, при необходимости – сертификация по ГОСТ&nbsp;Р.
+        </p>
+        <p class="notes">
+          Для части одежды и текстильных изделий обязательна маркировка в системе «Честный ЗНАК» (DataMatrix‑код, GTIN, серийный номер и криптокод) до выпуска товара в обращение.
+        </p>
+        <p class="notes">
+          <strong>Краткий чек‑лист:</strong> 1) подобрать HS/ТН ВЭД; 2) проверить требования ТР ТС 017/2011 и EAC; 3) учесть маркировку; 4) подготовить русские ярлыки; 5) согласовать пошлины и НДС с таможенным представителем.
+        </p>
+      `,
+      th_use: "Использование",
+      th_groups: "Группы HS / ТН ВЭД",
+      th_notes: "Примечания",
+      th_code: "Код",
+      th_desc: "Описание"
+    }
   },
-  okved: {
-    manufacturers: [
-      { code: "13.20",  description: "Ткацкое производство – weaving of fabrics from cotton, linen, synthetics." },
-      { code: "13.30",  description: "Отделочная обработка тканей – dyeing, printing, finishing, coating." },
-      { code: "13.92.1", description: "Производство готовых текстильных изделий, кроме одежды – bed linen, curtains, etc." }
-    ],
-    wholesalers: [
-      { code: "46.41",   description: "Торговля оптовая текстильными изделиями – core wholesaler/distributor code." },
-      { code: "46.41.1", description: "Оптовая торговля пряжей – yarn for weaving and knitting." },
-      { code: "46.41.2", description: "Оптовая торговля ткаными текстильными изделиями – woven fabrics for apparel, bedding, upholstery." }
-    ]
+  tr: {
+    tnved: {
+      description: "Kumaşlar için dokuma HS başlıkları (Avrasya Birliği'nde TN VED grupları olarak kullanılır).",
+      uses: [
+        {
+          fabric_use: "Nevresim / yatak takımı",
+          hs_groups: ["5208–5212", "5309"],
+          notes: "Nevresimlik pamuk ve keten kumaşlar; Rusya / Çin / Türkiye'de kullanılan pamuklu ve keten dokuma HS grupları."
+        },
+        {
+          fabric_use: "Kadın giyim (yaz, organik)",
+          hs_groups: ["5208–5212", "5309"],
+          notes: "Elbise, bluz ve etekler için hafif organik pamuk ve keten."
+        },
+        {
+          fabric_use: "Çocuk giyimi (4 mevsim, organik)",
+          hs_groups: ["5208–5212", "5309"],
+          notes: "Çocuk kıyafetleri için hipoalerjenik organik pamuk / keten kumaşlar."
+        },
+        {
+          fabric_use: "Perde ve tül",
+          hs_groups: ["5208–5210", "5407–5408", "5512–5516"],
+          notes: "Pamuk, keten ve sentetik iplik/stapel karışımları (voil ve dekoratif karışımlar dahil)."
+        },
+        {
+          fabric_use: "Mobilya döşemelik",
+          hs_groups: ["5209", "5211–5212", "5407", "5512–5516", "5903"],
+          notes: "Ağır pamuk ve sentetik döşemelik kumaşlar; 5903 altında kaplamalı/lamine tekstiller."
+        }
+      ]
+    },
+    okved: {
+      manufacturers: [
+        { code: "13.20",  description: "Dokuma – pamuk, keten, sentetik vb. kumaş üretimi." },
+        { code: "13.30",  description: "Kumaş terbiye işlemleri – boyama, baskı, bitim, kaplama." },
+        { code: "13.92.1", description: "Hazır tekstil ürünleri (giyim hariç) – nevresim, perde vb." }
+      ],
+      wholesalers: [
+        { code: "46.41",   description: "Tekstil ürünleri toptan ticareti – ana toptancı / distribütör kodu." },
+        { code: "46.41.1", description: "İplik toptan ticareti – dokuma ve örme için." },
+        { code: "46.41.2", description: "Dokuma tekstil ürünleri toptan ticareti – giyim, nevresim ve döşemelik kumaşlar." }
+      ]
+    },
+    ui: {
+      pill: "İhracat için tekstil",
+      title: "Rusya, Çin ve Türkiye için kumaş kodları",
+      subtitle: "Nevresim, giyim, çocuk giyimi, perde ve mobilya kumaşları için HS kodları ve Rus üretici/toptancı ОКВЭД kodları.",
+      hs_header: "HS / TN VED – kumaş kullanım alanları",
+      hs_tagline: "Rusya, Çin ve Türkiye'de aynı HS 4–6 haneli gruplar",
+      hs_footnote: "HS 5208–5212, 5309, 5407–5408, 5512–5516 ve 5903 kodları küresel Harmonized System gruplarıdır; TN VED, Çin gümrük kodu ve Türkiye GTİP içinde detaylandırılır.",
+      okved_m_header: "ОКВЭД – üreticiler",
+      okved_m_tagline: "Tekstil üretimi için Rus faaliyet kodları",
+      okved_w_header: "ОКВЭД – toptancılar / distribütörler",
+      okved_w_tagline: "Kumaş toptan ticareti için Rus faaliyet kodları",
+      import_header: "Rusya'ya kumaş ithalatı – temel gereklilikler",
+      import_tagline: "Sertifikasyon, işaretleme kontrol listesi",
+      import_html: `
+        <p class="notes">
+          Rusya'ya kumaş ithalatı – Önemli noktalar: Rusya'ya kumaş ve giyim eşyası ithalatı için başlıca şartlar, "Hafif sanayi ürünlerinin güvenliği hakkında" TR CU 017/2011 yönetmeliğine uyum, EAC beyanı veya uygunluk belgesi alınması ve gerekirse GOST R sertifikasına sahip olunmasıdır.
+        </p>
+        <p class="notes">
+          Bazı tekstil ve giyim ürünleri için Chestny ZNAK sistemi zorunlu ve DataMatrix işaretlemesi uygulanır (GTIN, seri numarası ve kripto kodu).
+        </p>
+        <p class="notes">
+          <strong>Kısa kontrol listesi:</strong> 1) Doğru HS/TN VED kodunu seçin 2) TR CU 017/2011 ve EAC gerekliliklerini kontrol edin 3) İşaretleme kurallarını doğrulayın 4) Rusça etiketler hazırlayın 5) Gümrük vergisi ve KDV oranlarını gümrük müşaviri ile netleştirin.
+        </p>
+      `,
+      th_use: "Kullanım",
+      th_groups: "HS / TN VED grupları",
+      th_notes: "Notlar",
+      th_code: "Kod",
+      th_desc: "Açıklama"
+    }
   }
 };
 
-renderTnved(data.tnved);
-renderOkvedManufacturers(data.okved);
-renderOkvedWholesalers(data.okved);
+let currentLang = "ru";
+renderAll();
 
-function renderTnved(tnved) {
-  const container = document.getElementById('tnved-container');
+document.querySelectorAll(".lang-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.getAttribute("data-lang");
+    if (lang === currentLang) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll(".lang-btn").forEach(b => b.classList.toggle("active", b === btn));
+    renderAll();
+  });
+});
+
+function renderAll() {
+  const { tnved, okved, ui } = dataset[currentLang];
+  document.querySelector("[data-i18n='pill']").childNodes[0].nodeValue = ui.pill + " ";
+  document.querySelector("[data-i18n='title']").textContent = ui.title;
+  document.querySelector("[data-i18n='subtitle']").textContent = ui.subtitle;
+  document.querySelector("[data-i18n='hs_header']").textContent = ui.hs_header;
+  document.querySelector("[data-i18n='hs_tagline']").textContent = ui.hs_tagline;
+  document.querySelector("[data-i18n='hs_footnote']").textContent = ui.hs_footnote;
+  document.querySelector("[data-i18n='okved_m_header']").textContent = ui.okved_m_header;
+  document.querySelector("[data-i18n='okved_m_tagline']").textContent = ui.okved_m_tagline;
+  document.querySelector("[data-i18n='okved_w_header']").textContent = ui.okved_w_header;
+  document.querySelector("[data-i18n='okved_w_tagline']").textContent = ui.okved_w_tagline;
+  document.querySelector("[data-i18n='import_header']").textContent = ui.import_header;
+  document.querySelector("[data-i18n='import_tagline']").textContent = ui.import_tagline;
+
+  renderTnved(tnved, ui);
+  renderOkvedManufacturers(okved, ui);
+  renderOkvedWholesalers(okved, ui);
+  renderImportNotes(ui);
+}
+
+function renderTnved(tnved, ui) {
+  const container = document.getElementById("tnved-container");
   if (!tnved || !Array.isArray(tnved.uses)) {
-    container.textContent = "No HS / ТН ВЭД data.";
+    container.textContent = "No HS / TN VED data.";
     return;
   }
   let html = "";
   if (tnved.description) {
-    html += '<p class="notes">' + escapeHtml(tnved.description) + '</p>';
+    html += '<p class="notes">' + escapeHtml(tnved.description) + "</p>";
   }
-  html += '<table><thead><tr>' +
-          '<th>Use</th><th>HS / ТН ВЭД groups</th><th>Notes</th>' +
-          '</tr></thead><tbody>';
+  html += "<table><thead><tr>" +
+          "<th>" + escapeHtml(ui.th_use) + "</th>" +
+          "<th>" + escapeHtml(ui.th_groups) + "</th>" +
+          "<th>" + escapeHtml(ui.th_notes) + "</th>" +
+          "</tr></thead><tbody>";
   tnved.uses.forEach(item => {
     const groups = (item.hs_groups || []).map(g =>
-      '<span class="code-badge"><span>HS</span>' + escapeHtml(g) + '</span>'
+      '<span class="code-badge"><span>HS</span>' + escapeHtml(g) + "</span>"
     ).join(" ");
     html += "<tr>" +
             "<td>" + escapeHtml(item.fabric_use || "") + "</td>" +
@@ -274,13 +462,12 @@ function renderTnved(tnved) {
   container.innerHTML = html;
 }
 
-function renderOkvedManufacturers(okved) {
-  const container = document.getElementById('okved-manufacturers');
-  if (!okved || !Array.isArray(okved.manufacturers)) {
-    container.textContent = "No manufacturer ОКВЭД data.";
-    return;
-  }
-  let html = '<table><thead><tr><th>ОКВЭД</th><th>Description</th></tr></thead><tbody>';
+function renderOkvedManufacturers(okved, ui) {
+  const container = document.getElementById("okved-manufacturers");
+  let html = "<table><thead><tr>" +
+             "<th>" + escapeHtml(ui.th_code) + "</th>" +
+             "<th>" + escapeHtml(ui.th_desc) + "</th>" +
+             "</tr></thead><tbody>";
   okved.manufacturers.forEach(item => {
     html += "<tr>" +
             '<td><span class="code-badge"><span>ОКВЭД</span>' + escapeHtml(item.code || "") + "</span></td>" +
@@ -291,13 +478,12 @@ function renderOkvedManufacturers(okved) {
   container.innerHTML = html;
 }
 
-function renderOkvedWholesalers(okved) {
-  const container = document.getElementById('okved-wholesalers');
-  if (!okved || !Array.isArray(okved.wholesalers)) {
-    container.textContent = "No wholesaler ОКВЭД data.";
-    return;
-  }
-  let html = '<table><thead><tr><th>ОКВЭД</th><th>Description</th></tr></thead><tbody>';
+function renderOkvedWholesalers(okved, ui) {
+  const container = document.getElementById("okved-wholesalers");
+  let html = "<table><thead><tr>" +
+             "<th>" + escapeHtml(ui.th_code) + "</th>" +
+             "<th>" + escapeHtml(ui.th_desc) + "</th>" +
+             "</tr></thead><tbody>";
   okved.wholesalers.forEach(item => {
     html += "<tr>" +
             '<td><span class="code-badge"><span>ОКВЭД</span>' + escapeHtml(item.code || "") + "</span></td>" +
@@ -306,6 +492,11 @@ function renderOkvedWholesalers(okved) {
   });
   html += "</tbody></table>";
   container.innerHTML = html;
+}
+
+function renderImportNotes(ui) {
+  const container = document.getElementById("import-notes");
+  container.innerHTML = ui.import_html || "";
 }
 
 function escapeHtml(str) {
